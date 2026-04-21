@@ -2,15 +2,13 @@
 
 import Image from "next/image";
 import { Check } from "@phosphor-icons/react";
-import CartoonButton from "./ui/CartoonButton";
-import SectionHeading from "./ui/SectionHeading";
 import { useCartStore } from "@/store/cartStore";
 
 const bundleIncludes = [
-  "Ceramic Spray",
-  "Blue Soap",
-  "Thick Dressing",
-  "Glass Cleaner",
+  { name: "Ceramic Spray", price: "$15" },
+  { name: "Blue Soap", price: "$15" },
+  { name: "Thick Dressing", price: "$15" },
+  { name: "Glass Cleaner", price: "$10" },
 ];
 
 export default function BundleCTA() {
@@ -18,113 +16,120 @@ export default function BundleCTA() {
 
   return (
     <section
-      className="bg-pure-yellow border-y-[3px] border-pure-outline py-20 px-4 sm:px-6 lg:px-8"
+      className="border-b-[3px] border-pure-outline py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #050d1a 0%, #0a1628 60%, #001844 100%)" }}
       aria-labelledby="bundle-heading"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <SectionHeading as="h2" highlight="THE" id="bundle-heading">
-            COMPLETE BUNDLE
-          </SectionHeading>
-          <p className="font-body text-base text-pure-outline mt-3">
-            Everything you need for that FULL clean &amp; shine.
-          </p>
+      {/* Dot grid */}
+      <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" aria-hidden="true" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-12">
+          <div className="h-[3px] w-12 bg-pure-red" aria-hidden="true" />
+          <span className="font-cartoon text-xs uppercase tracking-[0.25em] text-pure-red">Bundle Deal</span>
         </div>
 
-        {/* White card */}
-        <div className="relative bg-white border-[4px] border-pure-outline shadow-cartoon-xl">
-          {/* Rotating BUNDLE DEAL badge */}
-          <div
-            className="absolute -top-6 -right-4 md:-top-8 md:-right-6 w-20 h-20 md:w-24 md:h-24 flex items-center justify-center z-20"
-            aria-label="Bundle Deal"
-          >
-            <div className="relative animate-rotate-badge">
-              <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-24 md:h-24">
-                <path
-                  id="circle-text-path"
-                  d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
-                  fill="none"
-                />
-                <text fontSize="11" fill="#111827" fontFamily="'Russo One', sans-serif">
-                  <textPath href="#circle-text-path" startOffset="0%">
-                    BUNDLE DEAL • SAVE MORE •
-                  </textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-10 h-10 bg-pure-red border-[2px] border-pure-outline rounded-full flex items-center justify-center shadow-[2px_2px_0_#111827]">
-                  <span className="font-display italic text-white text-[9px] leading-tight text-center">
-                    4PC<br />SET
-                  </span>
-                </div>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* Left: bundle image */}
+          <div className="relative flex items-center justify-center">
+            {/* Glow halo */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: "radial-gradient(circle at center, rgba(0,168,255,0.12) 0%, transparent 70%)" }}
+              aria-hidden="true"
+            />
+            <Image
+              src="/bundle-4piece.png"
+              alt="Pure Ride Complete 4-Piece Bundle — Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner"
+              width={560}
+              height={420}
+              className="relative z-10 w-full max-w-lg object-contain"
+              style={{ filter: "drop-shadow(0 0 40px rgba(0,168,255,0.2)) drop-shadow(0 16px 40px rgba(0,0,0,0.6))" }}
+            />
           </div>
 
-          <div className="flex flex-col md:flex-row">
-            {/* Left: real bundle image */}
-            <div className="flex-1 bg-pure-outline/5 border-b-[3px] md:border-b-0 md:border-r-[3px] border-pure-outline flex items-center justify-center p-4 md:p-6 min-h-[280px]">
-              <Image
-                src="/bundle-4piece.png"
-                alt="Pure Ride Complete 4-Piece Set — Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner"
-                width={420}
-                height={320}
-                className="w-full max-w-sm object-contain"
-              />
-            </div>
-
-            {/* Right: copy + checklist + pricing */}
-            <div className="flex-1 p-8">
-              <h3 className="font-display italic text-3xl text-pure-outline mb-2">
-                THE 4-PIECE SET
-              </h3>
-              <p className="font-body text-sm text-gray-600 mb-6">
-                Our most popular bundle — everything you need for a clean, shiny ride.
-                Trusted by detailing pros and weekend warriors alike.
-              </p>
-
-              <ul className="space-y-2 mb-8">
-                {bundleIncludes.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-pure-blue border-[2px] border-pure-outline flex items-center justify-center shrink-0">
-                      <Check size={12} weight="bold" className="text-white" aria-hidden="true" />
-                    </div>
-                    <span className="font-body text-sm text-pure-outline">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex items-baseline gap-4 mb-6 flex-wrap">
-                <span className="font-display italic text-4xl text-pure-outline">$50</span>
-                <span className="font-body text-lg text-gray-400 line-through">$55</span>
-                <span className="font-cartoon text-xs bg-pure-red text-white px-2 py-0.5 border-[2px] border-pure-outline">
-                  ALL 4 FOR JUST $50
-                </span>
-              </div>
-
-              <CartoonButton
-                variant="dark"
-                size="lg"
-                aria-label="Add the Pure Ride 4-Piece Bundle to cart"
-                onClick={() =>
-                  addItem({
-                    id: "4piece-bundle",
-                    name: "4-Piece Bundle Set",
-                    subtitle: "Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner",
-                    price: 50.00,
-                    color: "#002855",
-                    image: "/bundle-4piece.png",
-                  })
-                }
-                className="w-full justify-center"
+          {/* Right: copy */}
+          <div>
+            <h2
+              id="bundle-heading"
+              className="font-display italic leading-none tracking-wide mb-6"
+            >
+              <span className="block text-5xl md:text-6xl lg:text-7xl text-white">
+                THE COMPLETE
+              </span>
+              <span
+                className="block text-6xl md:text-7xl lg:text-8xl"
+                style={{ WebkitTextStroke: "2px #00a8ff", color: "transparent" }}
               >
-                Add Bundle to Cart →
-              </CartoonButton>
+                4-PIECE SET
+              </span>
+            </h2>
 
-              <p className="font-body text-xs text-gray-400 mt-3 text-center">
-                Save more. Shine better. Ride clean. Limited time.
-              </p>
+            <p className="font-body text-base text-white/50 mb-8 max-w-sm">
+              Everything you need for that full clean &amp; shine.
+              Save more. Shine better. Ride clean.
+            </p>
+
+            {/* Checklist */}
+            <div className="space-y-3 mb-8">
+              {bundleIncludes.map((item) => (
+                <div key={item.name} className="flex items-center justify-between gap-4 border-b border-white/5 pb-3">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-5 h-5 border-[2px] border-pure-blue flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(0,168,255,0.1)" }}
+                    >
+                      <Check size={11} weight="bold" className="text-pure-blue" aria-hidden="true" />
+                    </div>
+                    <span className="font-cartoon text-sm text-white uppercase tracking-wider">{item.name}</span>
+                  </div>
+                  <span className="font-body text-sm text-white/30 line-through">{item.price}</span>
+                </div>
+              ))}
             </div>
+
+            {/* Pricing */}
+            <div
+              className="flex items-center gap-4 mb-8 p-5 border-[2px] border-pure-yellow/30"
+              style={{ background: "rgba(255,204,0,0.05)" }}
+            >
+              <div>
+                <div className="font-body text-xs text-white/40 uppercase tracking-widest mb-1">Bundle Price</div>
+                <div className="font-display italic text-5xl leading-none text-pure-yellow">$50</div>
+              </div>
+              <div className="w-px h-12 bg-white/10" aria-hidden="true" />
+              <div>
+                <div className="font-body text-xs text-white/40 uppercase tracking-widest mb-1">vs. Individual</div>
+                <div className="font-cartoon text-lg text-white/30 line-through">$55</div>
+              </div>
+              <div
+                className="ml-auto px-3 py-2 border-[2px] border-pure-red bg-pure-red/10"
+              >
+                <span className="font-cartoon text-xs text-pure-red uppercase tracking-wider">All 4 for $50</span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => addItem({
+                id: "4piece-bundle",
+                name: "4-Piece Bundle Set",
+                subtitle: "Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner",
+                price: 50,
+                color: "#00a8ff",
+                image: "/bundle-4piece.png",
+              })}
+              aria-label="Add the Pure Ride 4-Piece Bundle to cart"
+              className="btn-premium-red font-cartoon text-base uppercase tracking-widest text-white px-8 py-4 w-full"
+            >
+              Add Bundle to Cart →
+            </button>
+
+            <p className="font-body text-xs text-white/30 mt-4 text-center">
+              Limited time offer · Save more · Shine better
+            </p>
           </div>
         </div>
       </div>

@@ -2,224 +2,156 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import CartoonButton from "./ui/CartoonButton";
-
-function Bubble({
-  size,
-  top,
-  left,
-  delay,
-  opacity,
-}: {
-  size: number;
-  top: string;
-  left: string;
-  delay: string;
-  opacity: number;
-}) {
-  return (
-    <div
-      className="absolute rounded-full border-[3px] border-white/40 animate-bubble"
-      style={{
-        width: size,
-        height: size,
-        top,
-        left,
-        animationDelay: delay,
-        opacity,
-        background: "rgba(255,255,255,0.08)",
-      }}
-      aria-hidden="true"
-    />
-  );
-}
-
-function Sparkle({ top, right, delay }: { top: string; right: string; delay: string }) {
-  return (
-    <div
-      className="absolute text-pure-yellow text-2xl font-bold animate-pulse-sparkle select-none pointer-events-none"
-      style={{ top, right, animationDelay: delay }}
-      aria-hidden="true"
-    >
-      ✦
-    </div>
-  );
-}
 
 export default function Hero() {
   return (
     <section
-      className="relative bg-pure-blue overflow-hidden"
+      className="relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #050d1a 0%, #0a1628 55%, #001844 100%)",
+      }}
       aria-label="Hero section"
     >
-      {/* Floating bubbles */}
-      <Bubble size={80} top="10%" left="5%" delay="0s" opacity={0.5} />
-      <Bubble size={40} top="25%" left="15%" delay="1.2s" opacity={0.4} />
-      <Bubble size={120} top="60%" left="2%" delay="2.5s" opacity={0.3} />
-      <Bubble size={60} top="5%" left="40%" delay="0.8s" opacity={0.5} />
-      <Bubble size={30} top="80%" left="20%" delay="1.8s" opacity={0.6} />
-      <Bubble size={90} top="15%" left="75%" delay="3s" opacity={0.3} />
-      <Bubble size={50} top="50%" left="85%" delay="0.5s" opacity={0.45} />
-      <Bubble size={70} top="70%" left="70%" delay="2s" opacity={0.35} />
+      {/* Dot grid overlay */}
+      <div className="absolute inset-0 dot-grid opacity-60 pointer-events-none" aria-hidden="true" />
 
-      {/* Sparkle accents */}
-      <Sparkle top="12%" right="25%" delay="0s" />
-      <Sparkle top="35%" right="10%" delay="0.7s" />
-      <Sparkle top="60%" right="30%" delay="1.4s" />
+      {/* Speed accent stripes */}
+      <div className="absolute inset-y-0 right-0 w-1/2 pointer-events-none overflow-hidden" aria-hidden="true">
+        {[15, 35, 55, 70, 82].map((top, i) => (
+          <div
+            key={i}
+            className="absolute right-0 h-px"
+            style={{
+              top: `${top}%`,
+              width: `${40 + i * 10}%`,
+              background: `linear-gradient(to left, transparent, rgba(0,168,255,${0.06 + i * 0.02}))`,
+            }}
+          />
+        ))}
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-8 lg:gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-0 md:pt-20">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-6 lg:gap-12">
 
-          {/* Left: copy */}
+          {/* ── Left: copy ── */}
           <div className="flex-1 text-center md:text-left">
+
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-pure-yellow border-[3px] border-pure-outline shadow-cartoon px-4 py-1.5 mb-6">
-              <span className="font-cartoon text-xs uppercase tracking-widest text-pure-outline">
-                🏆 Premium Car Care
+            <div className="inline-flex items-center gap-2 border-[2px] border-pure-yellow/60 px-4 py-1.5 mb-6"
+              style={{ background: "rgba(255,204,0,0.08)" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-pure-yellow animate-pulse-sparkle" aria-hidden="true" />
+              <span className="font-cartoon text-xs uppercase tracking-[0.2em] text-pure-yellow">
+                Premium Car Care
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="font-display italic text-6xl sm:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-wide text-white mb-4">
-              RIDE{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-pure-outline">CLEAN</span>
-                <span
-                  className="absolute inset-0 bg-pure-yellow -z-0 -skew-x-6 -mx-2 px-2"
-                  aria-hidden="true"
-                />
+            <h1 className="font-display italic leading-[0.88] tracking-wide mb-6">
+              <span className="block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-white">
+                RIDE
               </span>
-              <br />
-              RIDE{" "}
-              <span className="text-pure-yellow">PROUD</span>
+              <span
+                className="block text-7xl sm:text-8xl lg:text-9xl xl:text-[10rem] relative"
+                style={{
+                  WebkitTextStroke: "2px #00a8ff",
+                  color: "transparent",
+                  textShadow: "0 0 40px rgba(0,168,255,0.3)",
+                }}
+              >
+                CLEAN
+              </span>
+              <span className="block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-pure-yellow">
+                RIDE PROUD
+              </span>
             </h1>
 
-            {/* Speech bubble paragraph */}
-            <div className="relative inline-block md:block mt-6 mb-8">
-              <div
-                className="bg-pure-darkblue border-[3px] border-pure-outline shadow-cartoon-lg px-6 py-5 max-w-md mx-auto md:mx-0"
-                style={{ borderRadius: "4px 20px 20px 20px" }}
-              >
-                {/* Speech bubble triangle */}
-                <div
-                  className="absolute -top-3 left-4 w-0 h-0"
-                  style={{
-                    borderLeft: "12px solid transparent",
-                    borderRight: "12px solid transparent",
-                    borderBottom: "14px solid #111827",
-                  }}
-                  aria-hidden="true"
-                />
-                <div
-                  className="absolute -top-[9px] left-[17px] w-0 h-0"
-                  style={{
-                    borderLeft: "9px solid transparent",
-                    borderRight: "9px solid transparent",
-                    borderBottom: "11px solid #002855",
-                  }}
-                  aria-hidden="true"
-                />
-                <p className="font-body text-base text-white/90 leading-relaxed">
-                  Car care that hits different. Bold formulas. Bold results.
-                  Our esports-grade detailing lineup keeps your ride looking
-                  like it just rolled off the showroom floor — every single time.
-                </p>
-              </div>
-            </div>
+            {/* Accent line */}
+            <div className="w-32 h-[3px] mb-6 mx-auto md:mx-0"
+              style={{ background: "linear-gradient(90deg, #ff3333, #00a8ff, #ffcc00)" }}
+              aria-hidden="true"
+            />
+
+            {/* Subtitle */}
+            <p className="font-body text-base md:text-lg text-white/60 max-w-md mx-auto md:mx-0 leading-relaxed mb-8">
+              Bold formulas engineered for results. Pro-grade car care
+              with the energy your ride deserves.
+            </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-10">
               <Link href="/products">
-                <CartoonButton variant="red" size="lg" aria-label="Shop all Pure Ride products">
+                <button
+                  className="btn-premium-red font-cartoon text-base uppercase tracking-widest text-white px-8 py-4"
+                  aria-label="Shop all Pure Ride products"
+                >
                   Shop Now →
-                </CartoonButton>
+                </button>
               </Link>
               <Link href="/bundles">
-                <CartoonButton variant="yellow" size="lg" aria-label="View Pure Ride bundles">
+                <button
+                  className="font-cartoon text-base uppercase tracking-widest text-white px-8 py-4 border-[3px] border-white/30 hover:border-pure-blue hover:text-pure-blue transition-all duration-150"
+                  aria-label="View Pure Ride bundles"
+                  style={{ background: "rgba(255,255,255,0.04)" }}
+                >
                   See Bundles
-                </CartoonButton>
+                </button>
               </Link>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-8">
-              {["Free Shipping $50+", "30-Day Guarantee", "Pro Formula"].map((badge) => (
-                <div
-                  key={badge}
-                  className="bg-white/15 border-[2px] border-white/40 px-3 py-1.5"
-                >
-                  <span className="font-cartoon text-xs text-white uppercase tracking-wider">
-                    ✓ {badge}
-                  </span>
+            {/* Stats row */}
+            <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+              {[
+                { value: "4", label: "Pro Products" },
+                { value: "1", label: "Bundle Kit" },
+                { value: "100%", label: "Satisfaction" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center md:text-left">
+                  <div className="font-display italic text-3xl text-pure-blue leading-none">{stat.value}</div>
+                  <div className="font-body text-xs text-white/40 uppercase tracking-widest mt-0.5">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: animated logo blob */}
-          <div className="flex-1 flex items-center justify-center relative min-h-[320px] md:min-h-[480px]">
-            {/* Outer blob (cyan, slow spin) */}
+          {/* ── Right: logo with glow stage ── */}
+          <div className="flex-1 flex items-end justify-center relative">
+            {/* Outer glow ring */}
             <div
-              className="absolute animate-spin-slow"
-              style={{
-                width: "380px",
-                height: "380px",
-                background: "rgba(0,180,255,0.35)",
-                border: "4px solid rgba(255,255,255,0.3)",
-                borderRadius: "60% 40% 70% 30% / 30% 70% 30% 70%",
-              }}
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
               aria-hidden="true"
-            />
-            {/* Inner blob (white, counter-rotate) */}
-            <div
-              className="absolute animate-spin-reverse"
-              style={{
-                width: "300px",
-                height: "300px",
-                background: "rgba(255,255,255,0.15)",
-                border: "4px solid rgba(255,255,255,0.5)",
-                borderRadius: "40% 60% 30% 70% / 70% 30% 70% 30%",
-              }}
-              aria-hidden="true"
-            />
+            >
+              <div
+                className="animate-glow-pulse"
+                style={{
+                  width: "420px",
+                  height: "420px",
+                  borderRadius: "50%",
+                  background: "radial-gradient(circle, rgba(0,168,255,0.08) 0%, transparent 70%)",
+                  boxShadow: "0 0 80px rgba(0,168,255,0.2), 0 0 160px rgba(0,168,255,0.08)",
+                }}
+              />
+            </div>
 
             {/* Logo */}
-            <div
-              className="relative z-10 animate-float"
-              style={{ filter: "drop-shadow(6px 6px 0 #111827)" }}
-            >
+            <div className="relative z-10 animate-float" style={{ marginBottom: "-4px" }}>
               <Image
                 src="/pure-ride-logo.png"
-                alt="Pure Ride Wash & Shine logo"
-                width={280}
-                height={280}
-                className="object-contain"
+                alt="Pure Ride Wash & Shine"
+                width={520}
+                height={390}
+                className="w-[320px] sm:w-[400px] lg:w-[480px] xl:w-[520px] h-auto object-contain"
+                style={{ filter: "drop-shadow(0 0 30px rgba(0,168,255,0.35)) drop-shadow(0 8px 24px rgba(0,0,0,0.6))" }}
                 priority
               />
             </div>
 
-            {/* Bouncing star */}
+            {/* Floating badge — SPECIAL PRICE */}
             <div
-              className="absolute top-4 right-8 md:right-12 text-4xl animate-bounce-star select-none pointer-events-none"
-              aria-hidden="true"
+              className="absolute top-8 right-0 md:right-4 bg-pure-red border-[3px] border-pure-outline shadow-cartoon-lg px-3 py-2 animate-bounce-star z-20"
+              aria-label="Special price available"
             >
-              ⭐
-            </div>
-
-            {/* Pulsing sparkles */}
-            <div
-              className="absolute bottom-8 left-4 text-3xl animate-pulse-sparkle select-none pointer-events-none"
-              style={{ animationDelay: "0.5s" }}
-              aria-hidden="true"
-            >
-              ✨
-            </div>
-            <div
-              className="absolute top-12 left-8 text-2xl animate-pulse-sparkle select-none pointer-events-none"
-              style={{ animationDelay: "1.2s" }}
-              aria-hidden="true"
-            >
-              ✦
+              <span className="font-display italic text-white text-lg leading-none block">FROM</span>
+              <span className="font-display italic text-white text-3xl leading-none block">$10</span>
             </div>
           </div>
         </div>
@@ -227,24 +159,9 @@ export default function Hero() {
 
       {/* Wavy SVG divider */}
       <div className="relative -mb-1" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full h-16 md:h-20 block"
-        >
-          {/* filled path — sky-50 fill */}
-          <path
-            d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40 L1440,80 L0,80 Z"
-            fill="#f0f9ff"
-          />
-          {/* stroked path on top */}
-          <path
-            d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40"
-            fill="none"
-            stroke="#111827"
-            strokeWidth="4"
-          />
+        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+          <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
+          <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40" fill="none" stroke="#111827" strokeWidth="4" />
         </svg>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import SectionHeading from "./ui/SectionHeading";
 import { Star } from "@phosphor-icons/react/dist/ssr";
 
 const testimonials = [
@@ -8,9 +7,9 @@ const testimonials = [
     avatar: "MT",
     avatarColor: "#00a8ff",
     rating: 5,
-    text: "The Pure Foam Soap is legit insane. Most suds I've ever seen from a consumer product. Zero swirls after. This is my new go-to wash for life.",
-    product: "Pure Foam Soap",
-    offset: "md:mt-0",
+    text: "The Blue Soap is legit insane. Most suds I've ever seen from a consumer product. Zero swirls after. This is my new go-to wash for life.",
+    product: "Blue Soap",
+    offset: "lg:mt-0",
   },
   {
     name: "Jasmine R.",
@@ -18,83 +17,92 @@ const testimonials = [
     avatar: "JR",
     avatarColor: "#ff3333",
     rating: 5,
-    text: "I bought the Complete Bundle on a whim and it completely replaced my entire detailing kit. The Ceramic Spray Shield alone is worth the price. Six months later still beading water.",
-    product: "Complete Bundle",
-    offset: "md:mt-16",
+    text: "I bought the 4-piece bundle and it completely replaced my entire detailing kit. The Ceramic Spray alone is worth it — six months later still beading water.",
+    product: "4-Piece Bundle",
+    offset: "lg:mt-12",
   },
   {
     name: "Devon M.",
     handle: "@blackcarbros",
     avatar: "DM",
-    avatarColor: "#002855",
+    avatarColor: "#ffcc00",
     rating: 5,
-    text: "Wheel Blast Degreaser turning purple on my rims is the most satisfying thing I've ever seen. Brake dust doesn't stand a chance. 10/10 no notes.",
-    product: "Wheel Blast Degreaser",
-    offset: "md:mt-8",
+    text: "Glass Cleaner on my tints with zero streaks, no ammonia smell. The Thick Dressing on my interior trim looks incredible. Pure Ride is the real deal.",
+    product: "Glass Cleaner",
+    offset: "lg:mt-6",
   },
 ];
 
 export default function Testimonials() {
   return (
     <section
-      className="bg-sky-50 py-20 px-4 sm:px-6 lg:px-8 border-t-[3px] border-pure-outline"
+      className="bg-white border-b-[3px] border-pure-outline py-24 px-4 sm:px-6 lg:px-8"
       aria-labelledby="testimonials-heading"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-14">
-          <SectionHeading as="h2" highlight="REAL" id="testimonials-heading">
-            RIDERS. REAL RESULTS.
-          </SectionHeading>
-          <p className="font-body text-base text-gray-500 mt-4">
-            Don&apos;t take our word for it — here&apos;s what the community is saying.
-          </p>
+
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
+          <div>
+            <div className="inline-flex items-center gap-2 border-[2px] border-pure-outline px-3 py-1 mb-4 bg-pure-outline">
+              <span className="font-cartoon text-[10px] uppercase tracking-[0.2em] text-white">Reviews</span>
+            </div>
+            <h2
+              id="testimonials-heading"
+              className="font-display italic text-5xl md:text-6xl leading-none tracking-wide text-pure-outline"
+            >
+              REAL RIDERS.<br />
+              <span className="text-pure-blue">REAL RESULTS.</span>
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 self-start md:self-auto">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={20} weight="fill" className="text-pure-yellow" aria-hidden="true" />
+            ))}
+            <span className="font-cartoon text-sm text-pure-outline ml-2 uppercase tracking-wider">5.0</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {testimonials.map((t) => (
             <div key={t.name} className={`relative ${t.offset}`}>
-              {/* Avatar badge — overflows the card corner */}
+              {/* Avatar */}
               <div
-                className="absolute -top-6 -left-4 z-20 w-14 h-14 rounded-full border-[3px] border-pure-outline shadow-cartoon flex items-center justify-center font-cartoon text-white text-sm font-bold"
+                className="absolute -top-5 -left-3 z-20 w-12 h-12 border-[3px] border-pure-outline shadow-cartoon flex items-center justify-center font-cartoon text-white text-sm"
                 style={{ background: t.avatarColor }}
                 aria-hidden="true"
               >
                 {t.avatar}
               </div>
 
-              {/* Card with corner-clipped radius */}
+              {/* Card */}
               <div
-                className="relative bg-white border-[3px] border-pure-outline shadow-cartoon-lg p-6 pt-10"
+                className="border-[3px] border-pure-outline shadow-cartoon-lg p-6 pt-10"
                 style={{
-                  borderRadius: "0 16px 16px 16px",
+                  background: "#fff",
+                  borderTop: `4px solid ${t.avatarColor}`,
                 }}
               >
                 {/* Stars */}
-                <div className="flex gap-0.5 mb-3" aria-label={`${t.rating} out of 5 stars`}>
+                <div className="flex gap-0.5 mb-4" aria-label={`${t.rating} out of 5 stars`}>
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      weight="fill"
-                      className="text-pure-yellow"
-                      aria-hidden="true"
-                    />
+                    <Star key={i} size={14} weight="fill" className="text-pure-yellow" aria-hidden="true" />
                   ))}
                 </div>
 
-                <blockquote className="font-body text-sm text-gray-700 leading-relaxed mb-5">
+                <blockquote className="font-body text-sm text-gray-600 leading-relaxed mb-6">
                   &ldquo;{t.text}&rdquo;
                 </blockquote>
 
-                <div className="border-t-[2px] border-gray-100 pt-4 flex items-center justify-between">
+                <div className="flex items-center justify-between pt-4 border-t-[2px] border-gray-100">
                   <div>
-                    <p className="font-cartoon text-xs text-pure-outline uppercase tracking-wide">
-                      {t.name}
-                    </p>
-                    <p className="font-body text-xs text-gray-400">{t.handle}</p>
+                    <p className="font-cartoon text-xs text-pure-outline uppercase tracking-widest">{t.name}</p>
+                    <p className="font-body text-xs text-gray-400 mt-0.5">{t.handle}</p>
                   </div>
-                  <div className="bg-pure-blue/10 border-[2px] border-pure-blue/30 px-2 py-1">
-                    <span className="font-cartoon text-[9px] text-pure-blue uppercase tracking-widest">
+                  <div
+                    className="px-2 py-1 border-[2px] border-pure-outline"
+                    style={{ background: `${t.avatarColor}15` }}
+                  >
+                    <span className="font-cartoon text-[9px] uppercase tracking-widest" style={{ color: t.avatarColor }}>
                       {t.product}
                     </span>
                   </div>
