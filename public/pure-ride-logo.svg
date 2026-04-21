@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="96" fill="#00a8ff" stroke="#111827" stroke-width="4"/>
+
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 4"/>
+
+  <!-- Car silhouette -->
+  <g transform="translate(28, 88)">
+    <!-- Car body -->
+    <rect x="8" y="28" width="128" height="30" rx="6" fill="#002855" stroke="#111827" stroke-width="3"/>
+    <!-- Car roof -->
+    <path d="M32 28 Q36 10 56 8 L88 8 Q108 10 112 28 Z" fill="#002855" stroke="#111827" stroke-width="3"/>
+    <!-- Windows -->
+    <path d="M38 26 Q41 14 54 12 L76 12 Q84 13 86 26 Z" fill="#00a8ff" stroke="#111827" stroke-width="2"/>
+    <path d="M88 26 Q90 13 98 12 L108 14 Q114 18 110 26 Z" fill="#00a8ff" stroke="#111827" stroke-width="2"/>
+    <!-- Wheels -->
+    <circle cx="36" cy="58" r="16" fill="#111827" stroke="#111827" stroke-width="2"/>
+    <circle cx="36" cy="58" r="8" fill="#666" stroke="#111827" stroke-width="2"/>
+    <circle cx="36" cy="58" r="3" fill="#fff"/>
+    <circle cx="108" cy="58" r="16" fill="#111827" stroke="#111827" stroke-width="2"/>
+    <circle cx="108" cy="58" r="8" fill="#666" stroke="#111827" stroke-width="2"/>
+    <circle cx="108" cy="58" r="3" fill="#fff"/>
+    <!-- Water droplets / shine -->
+    <path d="M60 20 Q62 14 64 20 Q62 24 60 20Z" fill="#fff" opacity="0.8"/>
+    <path d="M74 18 Q76 12 78 18 Q76 22 74 18Z" fill="#fff" opacity="0.6"/>
+  </g>
+
+  <!-- PURE RIDE text -->
+  <text x="100" y="58" font-family="'Arial Black', Arial, sans-serif" font-size="22" font-weight="900" font-style="italic" fill="#ffffff" text-anchor="middle" stroke="#111827" stroke-width="2" paint-order="stroke">PURE RIDE</text>
+
+  <!-- WASH & SHINE badge strip -->
+  <rect x="30" y="164" width="140" height="22" fill="#ffcc00" stroke="#111827" stroke-width="3" rx="2"/>
+  <text x="100" y="180" font-family="'Arial Black', Arial, sans-serif" font-size="11" font-weight="900" fill="#111827" text-anchor="middle" letter-spacing="2">WASH &amp; SHINE</text>
+
+  <!-- Star accent -->
+  <text x="170" y="48" font-size="20" fill="#ffcc00" stroke="#111827" stroke-width="1" paint-order="stroke">★</text>
+  <text x="14" y="54" font-size="14" fill="#ffcc00" stroke="#111827" stroke-width="1" paint-order="stroke">★</text>
+</svg>
