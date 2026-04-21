@@ -102,7 +102,9 @@ export default function Hero() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
                 <div className="animate-glow-pulse" style={{ width: "420px", height: "420px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,168,255,0.08) 0%, transparent 70%)" }} />
               </div>
-              <div className="hero-logo relative z-10 animate-float" style={{ marginBottom: "-4px" }}>
+              {/* hero-logo handles entrance; inner div handles continuous float — keep on separate elements to avoid animation override */}
+              <div className="hero-logo relative z-10" style={{ marginBottom: "-4px" }}>
+              <div className="animate-float">
                 <Image
                   src="/pure-ride-logo.png"
                   alt="Pure Ride Wash & Shine"
@@ -113,6 +115,7 @@ export default function Hero() {
                   priority
                 />
               </div>
+              </div>{/* end hero-logo */}
               <div className="absolute top-8 right-0 md:right-4 bg-pure-red border-[3px] border-pure-outline shadow-cartoon-lg px-3 py-2 animate-bounce-star z-20" aria-label="From $10">
                 <span className="font-display italic text-white text-lg leading-none block">FROM</span>
                 <span className="font-display italic text-white text-3xl leading-none block">$10</span>
