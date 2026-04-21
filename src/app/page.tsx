@@ -1,4 +1,5 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
+import ProductSchema from "@/components/ProductSchema";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import HowToSection from "@/components/HowToSection";
@@ -13,6 +14,7 @@ import FounderTrustLine from "@/components/FounderTrustLine";
 export default function Home() {
   return (
     <>
+      <ProductSchema />
       <div className="sticky top-0 z-50">
         <AnnouncementBar />
         <Nav />
