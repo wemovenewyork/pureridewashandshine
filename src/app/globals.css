@@ -172,6 +172,59 @@
   from { transform: scaleX(0); opacity: 0; }
   to { transform: scaleX(1); opacity: 1; }
 }
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(32px) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
+}
+@keyframes hero-badge {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-logo {
+  from { opacity: 0; transform: translateX(48px) scale(0.92); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+@keyframes accent-grow {
+  from { width: 0; opacity: 0; }
+  to   { width: 128px; opacity: 1; }
+}
+@keyframes ripple-out {
+  0%   { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Hero entrance (run on mount, above the fold) */
+.hero-badge  { opacity: 0; animation: hero-badge  0.6s cubic-bezier(0.16,1,0.3,1) 0.1s  forwards; }
+.hero-word-1 { opacity: 0; animation: hero-word   0.7s cubic-bezier(0.16,1,0.3,1) 0.25s forwards; }
+.hero-word-2 { opacity: 0; animation: hero-word   0.7s cubic-bezier(0.16,1,0.3,1) 0.38s forwards; }
+.hero-word-3 { opacity: 0; animation: hero-word   0.7s cubic-bezier(0.16,1,0.3,1) 0.51s forwards; }
+.hero-line   { opacity: 0; animation: accent-grow 0.7s cubic-bezier(0.16,1,0.3,1) 0.65s forwards; }
+.hero-body   { opacity: 0; animation: slide-up    0.6s cubic-bezier(0.16,1,0.3,1) 0.72s forwards; }
+.hero-cta    { opacity: 0; animation: slide-up    0.6s cubic-bezier(0.16,1,0.3,1) 0.84s forwards; }
+.hero-stats  { opacity: 0; animation: slide-up    0.6s cubic-bezier(0.16,1,0.3,1) 0.96s forwards; }
+.hero-logo   { opacity: 0; animation: hero-logo   0.9s cubic-bezier(0.16,1,0.3,1) 0.3s  forwards; }
+
+/* Ripple button */
+.btn-ripple { position: relative; overflow: hidden; }
+.btn-ripple .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  pointer-events: none;
+  animation: ripple-out 0.6s ease-out forwards;
+}
+
+/* Marquee ticker */
+.marquee-track { display: flex; width: max-content; animation: marquee 20s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
 
 .animate-float { animation: float 3s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 5s ease-in-out infinite; }
