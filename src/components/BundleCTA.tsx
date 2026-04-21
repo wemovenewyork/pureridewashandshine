@@ -6,7 +6,7 @@ import { useCartStore } from "@/store/cartStore";
 import ScrollReveal from "./ui/ScrollReveal";
 
 const bundleIncludes = [
-  { name: "Ceramic Spray", price: "$15" },
+  { name: "Ceramic Spray", price: "$20" },
   { name: "Blue Soap", price: "$15" },
   { name: "Thick Dressing", price: "$15" },
   { name: "Glass Cleaner", price: "$10" },
@@ -26,7 +26,7 @@ function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
 }
 
 export default function BundleCTA() {
-  const { addItem } = useCartStore();
+  const { addItem, openCart } = useCartStore();
 
   return (
     <section
@@ -92,7 +92,7 @@ export default function BundleCTA() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-4 mb-8 p-5 border-[2px] border-pure-yellow/30"
+              <div className="flex items-center gap-4 mb-3 p-5 border-[2px] border-pure-yellow/30"
                 style={{ background: "rgba(255,204,0,0.05)" }}>
                 <div>
                   <div className="font-body text-xs text-white/40 uppercase tracking-widest mb-1">Bundle Price</div>
@@ -101,17 +101,25 @@ export default function BundleCTA() {
                 <div className="w-px h-12 bg-white/10" aria-hidden="true" />
                 <div>
                   <div className="font-body text-xs text-white/40 uppercase tracking-widest mb-1">vs. Individual</div>
-                  <div className="font-cartoon text-lg text-white/30 line-through">$55</div>
+                  <div className="font-cartoon text-lg text-white/30 line-through">$60</div>
                 </div>
-                <div className="ml-auto px-3 py-2 border-[2px] border-pure-red bg-pure-red/10">
-                  <span className="font-cartoon text-xs text-pure-red uppercase tracking-wider">All 4 for $50</span>
+                <div
+                  className="ml-auto px-3 py-2 border-[2px] border-pure-red bg-pure-red/10"
+                  style={{ transform: "rotate(-3deg)" }}
+                >
+                  <span className="font-cartoon text-xs text-pure-red uppercase tracking-wider block">SAVE $10</span>
+                  <span className="font-cartoon text-[10px] text-pure-red/80 uppercase tracking-wider block text-center">17% OFF</span>
                 </div>
               </div>
+              <p className="font-body text-xs text-white/30 mb-8">
+                Individual total <span className="line-through">$60</span> · Bundle <span className="text-pure-yellow font-cartoon">$50</span>
+              </p>
 
               <button
                 onClick={(e) => {
                   addRipple(e);
                   addItem({ id: "4piece-bundle", name: "4-Piece Bundle Set", subtitle: "Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner", price: 50, color: "#00a8ff", image: "/bundle-4piece.png" });
+                  openCart();
                 }}
                 aria-label="Add the Pure Ride 4-Piece Bundle to cart"
                 className="btn-ripple btn-premium-red font-cartoon text-base uppercase tracking-widest text-white px-8 py-4 w-full"

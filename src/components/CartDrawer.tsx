@@ -9,7 +9,10 @@ export default function CartDrawer() {
 
   if (!isOpen) return null;
 
+  const FREE_SHIPPING_THRESHOLD = 50;
   const cartTotal = total();
+  const remaining = Math.max(FREE_SHIPPING_THRESHOLD - cartTotal, 0);
+  const progress = Math.min((cartTotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
 
   return (
     <>
@@ -96,6 +99,34 @@ export default function CartDrawer() {
         {/* Footer */}
         {items.length > 0 && (
           <div className="border-t-[3px] border-pure-outline p-5 space-y-4" style={{ background: "rgba(0,0,0,0.3)" }}>
+            {/* Free shipping progress */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-body text-[10px] text-white/40 uppercase tracking-widest" style={{ fontWeight: 700 }}>
+                  {remaining > 0
+                    ? <>${remaining.toFixed(0)} away from free shipping</>
+                    : <>🎉 You have free shipping!</>
+                  }
+                </span>
+                <span className="font-body text-[10px] text-white/30">$50</span>
+              </div>
+              <div className="h-1.5 border border-white/10 overflow-hidden" style={{ background: "rgba(255,255,255,0.05)" }}>
+                <div
+                  className="h-full transition-all duration-500"
+                  style={{
+                    width: `${progress}%`,
+                    background: progress >= 100
+                      ? "linear-gradient(90deg, #00a8ff, #00cc88)"
+                      : "linear-gradient(90deg, #00a8ff, #0070cc)",
+                  }}
+                  role="progressbar"
+                  aria-valuenow={Math.round(progress)}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={remaining > 0 ? `$${remaining.toFixed(0)} away from free shipping` : "Free shipping unlocked"}
+                />
+              </div>
+            </div>
             <div className="flex items-center justify-between">
               <span className="font-cartoon text-xs text-white/50 uppercase tracking-widest">Total</span>
               <span className="font-display italic text-3xl text-pure-yellow">${cartTotal.toFixed(2)}</span>

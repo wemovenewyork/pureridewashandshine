@@ -31,7 +31,7 @@ function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
-  const { addItem } = useCartStore();
+  const { addItem, openCart } = useCartStore();
 
   const handleTilt = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -107,7 +107,7 @@ export default function ProductCard({ product }: { product: Product }) {
             )}
           </div>
           <button
-            onClick={(e) => { addRipple(e); addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.price, color: product.color, image: product.image }); }}
+            onClick={(e) => { addRipple(e); addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.price, color: product.color, image: product.image }); openCart(); }}
             aria-label={`Add ${product.name} to cart`}
             className="btn-ripple flex items-center justify-center w-10 h-10 btn-premium-blue text-white"
           >

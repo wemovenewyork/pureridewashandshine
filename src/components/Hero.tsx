@@ -35,16 +35,12 @@ export default function Hero() {
                 <span className="font-cartoon text-xs uppercase tracking-[0.2em] text-pure-yellow">Premium Car Care</span>
               </div>
 
-              {/* Headline — each word animates independently */}
-              <h1 className="font-display italic leading-[0.88] tracking-wide mb-6">
+              {/* Headline */}
+              <h1 className="font-display italic leading-[0.92] tracking-wide mb-6">
                 <span className="hero-word-1 block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-white">
-                  RIDE
+                  RIDE CLEAN
                 </span>
-                <span className="hero-word-2 block text-7xl sm:text-8xl lg:text-9xl xl:text-[10rem] relative"
-                  style={{ WebkitTextStroke: "2px #00a8ff", color: "transparent", textShadow: "0 0 40px rgba(0,168,255,0.25)" }}>
-                  CLEAN
-                </span>
-                <span className="hero-word-3 block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-pure-yellow">
+                <span className="hero-word-2 block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-pure-yellow">
                   RIDE PROUD
                 </span>
               </h1>
@@ -61,7 +57,7 @@ export default function Hero() {
               </p>
 
               {/* CTAs */}
-              <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-10">
+              <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-4">
                 <Link href="/products">
                   <button
                     className="btn-ripple btn-premium-red font-cartoon text-base uppercase tracking-widest text-white px-8 py-4"
@@ -81,6 +77,11 @@ export default function Hero() {
                   </button>
                 </Link>
               </div>
+
+              {/* Price anchor */}
+              <p className="hero-cta font-body text-xs text-white/80 uppercase tracking-[0.15em] mb-8 text-center md:text-left" style={{ fontWeight: 700 }}>
+                Starts at $10 · Free Shipping $50+ · 30-Day Guarantee
+              </p>
 
               {/* Stats */}
               <div className="hero-stats flex flex-wrap gap-6 justify-center md:justify-start">
@@ -144,14 +145,9 @@ export default function Hero() {
             <div key={gi} className="flex items-center gap-0 shrink-0">
               {[
                 "PURE RIDE WASH & SHINE",
-                "CERAMIC SPRAY",
-                "BLUE SOAP",
-                "THICK DRESSING",
-                "GLASS CLEANER",
-                "RIDE CLEAN",
-                "RIDE PROUD",
-                "PRO FORMULA",
+                "RIDE CLEAN. RIDE PROUD.",
                 "FREE SHIPPING $50+",
+                "30-DAY GUARANTEE",
               ].map((item, i) => (
                 <span key={i} className="flex items-center gap-4 px-6">
                   <span className="font-display italic text-sm tracking-widest text-white whitespace-nowrap">{item}</span>

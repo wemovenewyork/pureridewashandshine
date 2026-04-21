@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { ShoppingCart, List, X, User } from "@phosphor-icons/react";
+import { ShoppingCart, List, X } from "@phosphor-icons/react";
 import { useCartStore } from "@/store/cartStore";
 
 const navLinks = [
@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-pure-night border-b-[3px] border-pure-outline"
+      className="bg-pure-night border-b-[3px] border-pure-outline"
       style={{ boxShadow: "0 4px 0 0 #111827, 0 6px 24px rgba(0,0,0,0.6)" }}
       aria-label="Main navigation"
     >
@@ -55,14 +55,6 @@ export default function Nav() {
 
           {/* Right actions */}
           <div className="flex items-center gap-3">
-            <button
-              aria-label="Sign in to your account"
-              className="hidden md:flex items-center gap-2 font-cartoon text-xs uppercase tracking-widest px-4 py-2 text-white/60 hover:text-white border-[2px] border-white/20 hover:border-white/40 transition-all duration-150"
-            >
-              <User size={15} weight="bold" aria-hidden="true" />
-              Sign In
-            </button>
-
             {/* Cart */}
             <button
               onClick={openCart}
@@ -72,7 +64,8 @@ export default function Nav() {
               <ShoppingCart size={20} weight="bold" aria-hidden="true" />
               {count > 0 && (
                 <span
-                  className="absolute -top-2 -right-2 bg-pure-red text-white text-[10px] font-cartoon w-5 h-5 flex items-center justify-center border-[2px] border-pure-outline"
+                  key={count}
+                  className="absolute -top-2 -right-2 bg-pure-red text-white text-[10px] font-cartoon w-5 h-5 flex items-center justify-center border-[2px] border-pure-outline animate-badge-pop"
                   aria-live="polite"
                 >
                   {count > 99 ? "99+" : count}
@@ -110,13 +103,6 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            <button
-              className="w-full mt-2 font-cartoon text-xs uppercase tracking-widest py-3 flex items-center justify-center gap-2 text-white/60 border-[2px] border-white/20"
-              aria-label="Sign in to your account"
-            >
-              <User size={14} weight="bold" aria-hidden="true" />
-              Sign In
-            </button>
           </div>
         </div>
       )}
