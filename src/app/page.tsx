@@ -15,10 +15,10 @@ export default function Home() {
       <CartDrawer />
       <main>
         <Hero />
-        <HowToSection />
         <ProductGrid />
-        <BundleCTA />
         <Testimonials />
+        <BundleCTA />
+        <HowToSection />
         <Newsletter />
       </main>
       <Footer />
