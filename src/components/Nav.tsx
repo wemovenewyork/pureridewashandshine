@@ -33,7 +33,7 @@ export default function Nav() {
               style={{ filter: "drop-shadow(2px 2px 0 #111827)" }}
             >
               <Image
-                src="/pure-ride-logo.svg"
+                src="/pure-ride-logo.png"
                 alt="Pure Ride Wash & Shine"
                 width={80}
                 height={80}

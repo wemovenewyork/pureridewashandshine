@@ -53,7 +53,7 @@ export default function Footer() {
             {/* Logo in white card */}
             <div className="bg-white border-[3px] border-pure-outline shadow-cartoon inline-flex items-center justify-center p-3 w-fit">
               <Image
-                src="/pure-ride-logo.svg"
+                src="/pure-ride-logo.png"
                 alt="Pure Ride Wash & Shine"
                 width={64}
                 height={64}

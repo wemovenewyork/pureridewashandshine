@@ -189,7 +189,7 @@ export default function Hero() {
               style={{ filter: "drop-shadow(6px 6px 0 #111827)" }}
             >
               <Image
-                src="/pure-ride-logo.svg"
+                src="/pure-ride-logo.png"
                 alt="Pure Ride Wash & Shine logo"
                 width={280}
                 height={280}
