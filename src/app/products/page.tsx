@@ -1,8 +1,9 @@
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import ProductCard from "@/components/ProductCard";
-import { PRODUCTS } from "@/components/ProductGrid";
+import { PRODUCTS } from "@/lib/products";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata = { title: "Products | Pure Ride Wash & Shine" };
@@ -27,7 +28,10 @@ export default function ProductsPage({
 
   return (
     <>
-      <Nav />
+      <div className="sticky top-0 z-50">
+        <AnnouncementBar />
+        <Nav />
+      </div>
       <CartDrawer />
       <main className="min-h-screen bg-sky-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">

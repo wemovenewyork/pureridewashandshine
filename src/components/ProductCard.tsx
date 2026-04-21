@@ -1,21 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Plus } from "@phosphor-icons/react";
+import { Plus, Star } from "@phosphor-icons/react";
 import { useCartStore } from "@/store/cartStore";
-
-export interface Product {
-  id: string;
-  name: string;
-  subtitle: string;
-  price: number;
-  originalPrice?: number;
-  category: "soap" | "glass" | "ceramic" | "wheel" | "interior";
-  image?: string;
-  color: string;
-  bottleColor: string;
-  badge?: string;
-}
+import type { ProductMeta } from "@/lib/products";
 
 function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
   const btn = e.currentTarget;
@@ -30,7 +18,24 @@ function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
   ripple.addEventListener("animationend", () => ripple.remove());
 }
 
-export default function ProductCard({ product }: { product: Product }) {
+function StarRating({ score, halfStar, count }: { score: number; halfStar: boolean; count: number }) {
+  const fullStars = score;
+  return (
+    <div className="flex items-center gap-1.5 mb-2">
+      <div className="flex gap-0.5" aria-label={`${score}${halfStar ? ".5" : ""} out of 5 stars`}>
+        {Array.from({ length: fullStars }).map((_, i) => (
+          <Star key={i} size={11} weight="fill" className="text-pure-yellow" aria-hidden="true" />
+        ))}
+        {halfStar && (
+          <Star size={11} weight="duotone" className="text-pure-yellow" aria-hidden="true" />
+        )}
+      </div>
+      <span className="font-body text-[10px] text-white/30" style={{ fontWeight: 600 }}>({count})</span>
+    </div>
+  );
+}
+
+export default function ProductCard({ product }: { product: ProductMeta }) {
   const { addItem, openCart } = useCartStore();
 
   const handleTilt = (e: React.MouseEvent<HTMLElement>) => {
@@ -95,16 +100,15 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Body */}
       <div className="flex flex-col flex-1 p-4">
         <h3 className="font-cartoon text-sm text-white uppercase tracking-widest leading-tight mb-1">{product.name}</h3>
-        <p className="font-body text-xs text-white/40 mb-4 flex-1 leading-relaxed">{product.subtitle}</p>
+        <StarRating score={product.rating.score} halfStar={product.rating.halfStar} count={product.rating.count} />
+        <p className="font-body text-xs text-white/40 mb-2 flex-1 leading-relaxed">{product.subtitle}</p>
+        <p className="font-body text-[10px] text-gray-500 uppercase tracking-widest mb-4" style={{ fontWeight: 600 }}>{product.usageLine}</p>
 
         <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
             <span className="font-display italic text-2xl leading-none" style={{ color: "#ffcc00" }}>
               ${product.price % 1 === 0 ? product.price.toFixed(0) : product.price.toFixed(2)}
             </span>
-            {product.originalPrice && (
-              <span className="font-body text-xs text-white/30 line-through">${product.originalPrice.toFixed(2)}</span>
-            )}
           </div>
           <button
             onClick={(e) => { addRipple(e); addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.price, color: product.color, image: product.image }); openCart(); }}

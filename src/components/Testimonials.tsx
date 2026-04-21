@@ -1,5 +1,6 @@
 import { Star } from "@phosphor-icons/react/dist/ssr";
 import ScrollReveal from "./ui/ScrollReveal";
+import { REVIEW_VOLUME } from "@/lib/constants";
 
 const testimonials = [
   {
@@ -44,6 +45,12 @@ export default function Testimonials() {
 
         <ScrollReveal animation="fadeUp" className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
           <div>
+            <p
+              className="font-body text-sm text-pure-darkblue uppercase tracking-[0.15em] mb-3"
+              style={{ fontWeight: 600 }}
+            >
+              Join {REVIEW_VOLUME}+ riders who&apos;ve made the switch
+            </p>
             <div className="inline-flex items-center gap-2 border-[2px] border-pure-outline px-3 py-1 mb-4 bg-pure-outline">
               <span className="font-cartoon text-[10px] uppercase tracking-[0.2em] text-white">Reviews</span>
             </div>

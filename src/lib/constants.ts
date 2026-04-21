@@ -1,0 +1,3 @@
+export const REVIEW_VOLUME = 340;
+export const FREE_SHIPPING_THRESHOLD = 50;
+export const NEWSLETTER_DISCOUNT_CODE = "PURE10";

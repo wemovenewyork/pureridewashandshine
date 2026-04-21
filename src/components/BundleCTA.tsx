@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Check } from "@phosphor-icons/react";
+import { Check, ShieldCheck, Truck, Flag, Lightning } from "@phosphor-icons/react";
 import { useCartStore } from "@/store/cartStore";
 import ScrollReveal from "./ui/ScrollReveal";
 
@@ -127,7 +127,20 @@ export default function BundleCTA() {
                 Add Bundle to Cart →
               </button>
 
-              <p className="font-body text-xs text-white/30 mt-4 text-center">Limited time offer · Save more · Shine better</p>
+              {/* Trust badges */}
+              <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { Icon: ShieldCheck, label: "30-Day Guarantee" },
+                  { Icon: Truck, label: "Free Shipping $50+" },
+                  { Icon: Flag, label: "Made in USA" },
+                  { Icon: Lightning, label: "Ships in 24hrs" },
+                ].map(({ Icon, label }) => (
+                  <div key={label} className="flex flex-col items-center gap-1 py-2">
+                    <Icon size={22} className="text-white/40" aria-hidden="true" />
+                    <span className="font-body text-[10px] text-white/30 uppercase tracking-widest text-center" style={{ fontWeight: 600 }}>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </div>
