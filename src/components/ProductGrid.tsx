@@ -3,52 +3,46 @@ import SectionHeading from "./ui/SectionHeading";
 
 export const PRODUCTS: Product[] = [
   {
-    id: "pure-foam-soap",
-    name: "Pure Foam Soap",
-    subtitle: "High-suds pH-neutral wash formula — safe on all surfaces",
-    price: 18.99,
+    id: "blue-soap",
+    name: "Blue Soap",
+    subtitle: "Rich colored foam — emulsified wash formula for all surfaces",
+    price: 15.00,
     category: "soap",
     color: "#00a8ff",
     bottleColor: "#00a8ff",
     badge: "Best Seller",
+    image: "/product-blue-soap.png",
   },
   {
-    id: "streak-free-glass",
-    name: "Streak-Free Glass Cleaner",
-    subtitle: "Ammonia-free crystal clarity for all glass surfaces",
-    price: 14.99,
-    category: "glass",
-    color: "#7dd3fc",
-    bottleColor: "#7dd3fc",
-  },
-  {
-    id: "ceramic-spray-shield",
-    name: "Ceramic Spray Shield",
-    subtitle: "SiO2 hydrophobic nano-coating — lasts up to 6 months",
-    price: 29.99,
-    originalPrice: 39.99,
+    id: "ceramic-spray",
+    name: "Ceramic Spray",
+    subtitle: "SiO2 technology — enhanced shine + deep shine protection",
+    price: 15.00,
     category: "ceramic",
     color: "#002855",
     bottleColor: "#002855",
     badge: "Pro Pick",
+    image: "/product-ceramic-spray.png",
   },
   {
-    id: "wheel-blast-degreaser",
-    name: "Wheel Blast Degreaser",
-    subtitle: "Iron-reactive brake dust remover — turns purple on contact",
-    price: 16.99,
-    category: "wheel",
-    color: "#ff3333",
-    bottleColor: "#ff3333",
-  },
-  {
-    id: "interior-fresh-detailer",
-    name: "Interior Fresh Detailer",
-    subtitle: "UV-protection detailer for dash, leather, and trim",
-    price: 19.99,
+    id: "thick-dressing",
+    name: "Thick Dressing",
+    subtitle: "Rejuvenates dry surfaces — water based, thick & high shine",
+    price: 15.00,
     category: "interior",
-    color: "#ffcc00",
-    bottleColor: "#ffcc00",
+    color: "#e5e7eb",
+    bottleColor: "#e5e7eb",
+    image: "/product-thick-dressing.png",
+  },
+  {
+    id: "glass-cleaner",
+    name: "Glass Cleaner",
+    subtitle: "No streaks formula — safe on tint, removes grime & dirt",
+    price: 10.00,
+    category: "glass",
+    color: "#f9a8d4",
+    bottleColor: "#f9a8d4",
+    image: "/product-glass-cleaner.png",
   },
 ];
 
@@ -71,7 +65,7 @@ export default function ProductGrid() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PRODUCTS.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
