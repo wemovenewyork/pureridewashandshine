@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PaperPlaneTilt } from "@phosphor-icons/react";
 import ScrollReveal from "./ui/ScrollReveal";
+import { NEWSLETTER_DISCOUNT_CODE } from "@/lib/constants";
 
 function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
   const btn = e.currentTarget;
@@ -38,21 +39,26 @@ export default function Newsletter() {
             <span className="font-cartoon text-xs uppercase tracking-[0.2em] text-pure-blue">Join the Clean Crew</span>
           </div>
 
-          <h2 id="newsletter-heading" className="font-display italic leading-none tracking-wide mb-6">
-            <span className="block text-5xl md:text-6xl text-white">STAY IN THE</span>
+          <h2 id="newsletter-heading" className="font-display italic leading-none tracking-wide mb-4">
+            <span className="block text-5xl md:text-6xl text-white">GET 10% OFF</span>
             <span className="block text-6xl md:text-7xl"
-              style={{ WebkitTextStroke: "2px #ffcc00", color: "transparent" }}>LOOP</span>
+              style={{ WebkitTextStroke: "2px #ffcc00", color: "transparent" }}>YOUR FIRST ORDER</span>
           </h2>
 
           <p className="font-body text-base text-white/50 mb-10 max-w-md mx-auto leading-relaxed">
-            Exclusive drops, detailing tips, early access to new formulas, and members-only discounts. No spam. Just clean content.
+            Plus early access to new drops, pro detailing tips, and members-only bundles.
           </p>
         </ScrollReveal>
 
         <ScrollReveal animation="scaleIn" delay={150}>
           {submitted ? (
-            <div className="border-[3px] border-pure-blue px-8 py-5" style={{ background: "rgba(0,168,255,0.08)", boxShadow: "0 0 24px rgba(0,168,255,0.2)" }}>
-              <p className="font-cartoon text-pure-blue uppercase tracking-widest">✓ You&apos;re in the crew. Check your inbox.</p>
+            <div className="border-[3px] border-pure-blue px-8 py-6" style={{ background: "rgba(0,168,255,0.08)", boxShadow: "0 0 24px rgba(0,168,255,0.2)" }}>
+              <p className="font-cartoon text-pure-blue uppercase tracking-widest mb-3">✓ You&apos;re in the crew. Check your inbox.</p>
+              <p className="font-body text-sm text-white/50 mb-2">Your discount code:</p>
+              <div className="inline-flex items-center gap-3 border-[3px] border-pure-yellow px-5 py-3" style={{ background: "rgba(255,204,0,0.06)" }}>
+                <span className="font-display italic text-3xl text-pure-yellow tracking-widest">{NEWSLETTER_DISCOUNT_CODE}</span>
+              </div>
+              <p className="font-body text-xs text-white/30 mt-3">Apply at checkout · One use per customer</p>
             </div>
           ) : (
             <form
@@ -79,7 +85,7 @@ export default function Newsletter() {
                 className="btn-ripple btn-premium-red font-cartoon text-sm uppercase tracking-widest text-white px-6 py-3 flex items-center gap-2 whitespace-nowrap justify-center"
               >
                 <PaperPlaneTilt size={16} weight="bold" aria-hidden="true" />
-                Subscribe
+                Get 10% Off
               </button>
             </form>
           )}
