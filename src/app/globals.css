@@ -9,8 +9,8 @@
   --color-pure-outline: #111827;
 
   /* Fonts */
-  --font-display: var(--font-bungee), 'Bungee', cursive;
-  --font-cartoon: var(--font-russo), 'Russo One', sans-serif;
+  --font-display: var(--font-barlow), 'Barlow Condensed', sans-serif;
+  --font-cartoon: var(--font-oswald), 'Oswald', sans-serif;
   --font-body: var(--font-chakra), 'Chakra Petch', sans-serif;
 
   /* Cartoon shadows */
@@ -76,10 +76,13 @@
 
   .font-display {
     font-family: var(--font-display);
+    font-weight: 900;
+    font-style: italic;
   }
 
   .font-cartoon {
     font-family: var(--font-cartoon);
+    font-weight: 700;
   }
 
   .font-body {

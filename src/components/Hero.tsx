@@ -80,7 +80,7 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-display italic text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] text-white mb-4">
+            <h1 className="font-display italic text-6xl sm:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-wide text-white mb-4">
               RIDE{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 text-pure-outline">CLEAN</span>

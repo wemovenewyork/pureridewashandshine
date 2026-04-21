@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Bungee, Russo_One, Chakra_Petch } from "next/font/google";
+import { Barlow_Condensed, Oswald, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 
-const bungee = Bungee({
-  weight: "400",
+const barlowCondensed = Barlow_Condensed({
+  weight: ["700", "800", "900"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-bungee",
+  variable: "--font-barlow",
   display: "swap",
 });
 
-const russoOne = Russo_One({
-  weight: "400",
+const oswald = Oswald({
+  weight: ["500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-russo",
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -43,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bungee.variable} ${russoOne.variable} ${chakraPetch.variable} antialiased`}
+        className={`${barlowCondensed.variable} ${oswald.variable} ${chakraPetch.variable} antialiased`}
       >
         {children}
       </body>

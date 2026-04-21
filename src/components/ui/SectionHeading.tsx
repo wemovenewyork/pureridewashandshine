@@ -19,7 +19,7 @@ export default function SectionHeading({
     <Tag
       id={id}
       className={[
-        "font-display italic text-4xl md:text-5xl leading-tight",
+        "font-display italic text-4xl md:text-5xl leading-none tracking-wide",
         light ? "text-white" : "text-pure-outline",
         className,
       ].join(" ")}
