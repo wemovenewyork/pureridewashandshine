@@ -2,7 +2,7 @@
 
 import { X, Trash, ShoppingCart } from "@phosphor-icons/react";
 import { useCartStore } from "@/store/cartStore";
-import Link from "next/link";
+import { buildCheckoutUrl } from "@/lib/shopify";
 
 export default function CartDrawer() {
   const { isOpen, closeCart, items, removeItem, updateQuantity, total } = useCartStore();
@@ -131,14 +131,19 @@ export default function CartDrawer() {
               <span className="font-cartoon text-xs text-white/50 uppercase tracking-widest">Total</span>
               <span className="font-display italic text-3xl text-pure-yellow">${cartTotal.toFixed(2)}</span>
             </div>
-            <Link href="/cart" onClick={closeCart}>
+            <a
+              href={buildCheckoutUrl(items.map(i => ({ id: i.id, quantity: i.quantity })))}
+              onClick={closeCart}
+              aria-label="Proceed to checkout"
+              className="block w-full"
+            >
               <button
                 aria-label="Proceed to checkout"
                 className="btn-premium-red font-cartoon text-sm uppercase tracking-widest text-white px-6 py-3 w-full"
               >
                 Checkout →
               </button>
-            </Link>
+            </a>
             <button onClick={closeCart} className="w-full font-body text-xs text-white/25 hover:text-white/50 transition-colors text-center underline underline-offset-2" aria-label="Continue shopping">
               Continue Shopping
             </button>
