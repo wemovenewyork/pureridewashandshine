@@ -63,13 +63,6 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
       onMouseLeave={resetTilt}
       aria-label={`${product.name} — view details`}
     >
-      {/* Badge */}
-      {product.badge && (
-        <div className="absolute top-3 left-3 z-10 bg-pure-yellow border-[2px] border-pure-outline px-2 py-0.5 shadow-[2px_2px_0_#111827]">
-          <span className="font-cartoon text-[10px] text-pure-outline uppercase tracking-widest">{product.badge}</span>
-        </div>
-      )}
-
       {/* Image panel */}
       <div className="relative flex items-center justify-center overflow-hidden border-b-[3px] border-pure-outline"
         style={{ height: "220px", background: "linear-gradient(145deg, #0a1628 0%, #050d1a 100%)" }}>
@@ -101,7 +94,14 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-4">
-        <h3 className="font-cartoon text-sm text-white uppercase tracking-widest leading-tight mb-1">{product.name}</h3>
+        <div className="flex items-center gap-2 mb-1">
+          <h3 className="font-cartoon text-sm text-white uppercase tracking-widest leading-tight">{product.name}</h3>
+          {product.badge && (
+            <span className="font-cartoon text-[9px] text-pure-outline uppercase tracking-widest bg-pure-yellow border-[2px] border-pure-outline px-1.5 py-0.5 shadow-[2px_2px_0_#111827] shrink-0">
+              {product.badge}
+            </span>
+          )}
+        </div>
         <StarRating score={product.rating.score} halfStar={product.rating.halfStar} count={product.rating.count} />
         <p className="font-body text-xs text-white/40 mb-2 flex-1 leading-relaxed">{product.subtitle}</p>
         <p className="font-body text-[10px] text-gray-500 uppercase tracking-widest mb-4" style={{ fontWeight: 600 }}>{product.usageLine}</p>

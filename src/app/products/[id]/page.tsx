@@ -74,15 +74,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   priority
                 />
               )}
-              {product.badge && (
-                <div className="absolute top-4 left-4 z-20 bg-pure-yellow border-[2px] border-pure-outline px-3 py-1 shadow-[3px_3px_0_#111827]">
-                  <span className="font-cartoon text-xs text-pure-outline uppercase tracking-widest">{product.badge}</span>
-                </div>
-              )}
             </div>
 
             {/* Detail panel */}
             <div className="flex flex-col">
+              {product.badge && (
+                <span className="font-cartoon text-xs text-pure-outline uppercase tracking-widest bg-pure-yellow border-[2px] border-pure-outline px-3 py-1 shadow-[3px_3px_0_#111827] inline-block self-start mb-4">
+                  {product.badge}
+                </span>
+              )}
               <h1 className="font-display italic text-4xl md:text-5xl text-pure-outline leading-none tracking-wide mb-4">
                 {product.name.toUpperCase()}
               </h1>
