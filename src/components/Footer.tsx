@@ -1,12 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  InstagramLogo,
-  TiktokLogo,
-  YoutubeLogo,
-  TwitterLogo,
-  Envelope,
-} from "@phosphor-icons/react/dist/ssr";
+import { Envelope } from "@phosphor-icons/react/dist/ssr";
 
 const shopLinks = [
   { href: "/products", label: "All Products" },
@@ -29,13 +23,6 @@ const legalLinks = [
   { href: "/terms", label: "Terms of Service" },
   { href: "/shipping", label: "Shipping Policy" },
   { href: "/returns", label: "Returns" },
-];
-
-const socialLinks = [
-  { href: "#", label: "Instagram", Icon: InstagramLogo },
-  { href: "#", label: "TikTok", Icon: TiktokLogo },
-  { href: "#", label: "YouTube", Icon: YoutubeLogo },
-  { href: "#", label: "Twitter / X", Icon: TwitterLogo },
 ];
 
 export default function Footer() {
@@ -69,19 +56,6 @@ export default function Footer() {
             <p className="font-body text-sm text-white/40 leading-relaxed max-w-xs">
               Bold formulas. Bold results. Pure Ride Wash &amp; Shine — car care built for riders who don&apos;t compromise.
             </p>
-            <div className="flex gap-2 flex-wrap">
-              {socialLinks.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={`Follow Pure Ride on ${label}`}
-                  className="flex items-center justify-center w-9 h-9 border-[2px] border-white/10 text-white/50 hover:border-pure-blue hover:text-pure-blue transition-all duration-150"
-                  style={{ background: "rgba(255,255,255,0.03)" }}
-                >
-                  <Icon size={16} aria-hidden="true" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Column 2: Shop */}
