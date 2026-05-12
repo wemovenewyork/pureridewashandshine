@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { useCartStore } from "@/store/cartStore";
 import CartoonButton from "@/components/ui/CartoonButton";
 import { Trash } from "@phosphor-icons/react";
+import { buildCheckoutUrl } from "@/lib/shopify";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, total, clearCart } = useCartStore();
@@ -115,14 +116,20 @@ export default function CartPage() {
                     </span>
                   </div>
                 </div>
-                <CartoonButton
-                  variant="red"
-                  size="lg"
+                <a
+                  href={buildCheckoutUrl(items.map((i) => ({ id: i.id, quantity: i.quantity })))}
                   aria-label="Proceed to checkout"
-                  className="w-full justify-center"
+                  className="block w-full"
                 >
-                  Checkout →
-                </CartoonButton>
+                  <CartoonButton
+                    variant="red"
+                    size="lg"
+                    aria-label="Proceed to checkout"
+                    className="w-full justify-center"
+                  >
+                    Checkout →
+                  </CartoonButton>
+                </a>
                 {cartTotal < 50 && (
                   <p className="font-body text-xs text-gray-400 mt-3 text-center">
                     Add ${(50 - cartTotal).toFixed(2)} more for free shipping

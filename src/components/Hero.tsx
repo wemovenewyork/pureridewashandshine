@@ -79,8 +79,12 @@ export default function Hero() {
               </div>
 
               {/* Price anchor */}
-              <p className="hero-cta font-body text-xs text-white/80 uppercase tracking-[0.15em] mb-8 text-center md:text-left" style={{ fontWeight: 700 }}>
-                Starts at $10 · Free Shipping $50+ · 30-Day Guarantee
+              <p className="hero-cta font-body text-sm text-white uppercase tracking-[0.15em] mb-8 text-center md:text-left" style={{ fontWeight: 800 }}>
+                <span className="text-pure-yellow">Starts at $10</span>
+                <span className="mx-2 text-white/40" aria-hidden="true">·</span>
+                Free Shipping $50+
+                <span className="mx-2 text-white/40" aria-hidden="true">·</span>
+                30-Day Guarantee
               </p>
 
               {/* Stats */}

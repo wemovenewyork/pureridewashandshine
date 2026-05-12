@@ -133,7 +133,6 @@ export default function CartDrawer() {
             </div>
             <a
               href={buildCheckoutUrl(items.map(i => ({ id: i.id, quantity: i.quantity })))}
-              onClick={closeCart}
               aria-label="Proceed to checkout"
               className="block w-full"
             >

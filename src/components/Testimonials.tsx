@@ -64,6 +64,9 @@ export default function Testimonials() {
               <Star key={i} size={20} weight="fill" className="text-pure-yellow" aria-hidden="true" />
             ))}
             <span className="font-cartoon text-sm text-pure-outline ml-2 uppercase tracking-wider">5.0</span>
+            <span className="font-body text-sm text-pure-outline/60 ml-1" style={{ fontWeight: 600 }}>
+              ({REVIEW_VOLUME}+ reviews)
+            </span>
           </div>
         </ScrollReveal>
 

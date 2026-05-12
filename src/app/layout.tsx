@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://pure-ride-wash.vercel.app"),
   title: "Pure Ride Wash & Shine | Premium Car Care Products",
   description:
-    "Premium car care for riders who don't compromise. Bold formulas, real results. Ride clean. Ride proud.",
+    "Premium car care from $10 · Free shipping on $50+ · 30-day guarantee. Bold formulas, real results. Ride clean.",
   keywords: ["car wash", "car detailing", "ceramic coating", "foam soap", "pure ride", "car care"],
   openGraph: {
     title: "Pure Ride Wash & Shine",
-    description: "Premium car care for riders who don't compromise. Ride clean. Ride proud.",
+    description: "Premium car care from $10. Free shipping $50+. 30-day guarantee.",
     url: "https://pure-ride-wash.vercel.app",
     siteName: "Pure Ride Wash & Shine",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Pure Ride Wash & Shine" }],

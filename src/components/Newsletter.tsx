@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PaperPlaneTilt } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Check, Copy } from "@phosphor-icons/react";
 import ScrollReveal from "./ui/ScrollReveal";
 import { NEWSLETTER_DISCOUNT_CODE } from "@/lib/constants";
 
@@ -21,6 +21,17 @@ function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const copyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(NEWSLETTER_DISCOUNT_CODE);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard API blocked; silent fall-through
+    }
+  };
 
   return (
     <section
@@ -57,6 +68,14 @@ export default function Newsletter() {
               <p className="font-body text-sm text-white/50 mb-2">Your discount code:</p>
               <div className="inline-flex items-center gap-3 border-[3px] border-pure-yellow px-5 py-3" style={{ background: "rgba(255,204,0,0.06)" }}>
                 <span className="font-display italic text-3xl text-pure-yellow tracking-widest">{NEWSLETTER_DISCOUNT_CODE}</span>
+                <button
+                  onClick={copyCode}
+                  aria-label={copied ? "Discount code copied" : "Copy discount code"}
+                  className="flex items-center gap-1.5 font-cartoon text-[10px] uppercase tracking-widest text-pure-yellow border-[2px] border-pure-yellow px-2 py-1 hover:bg-pure-yellow hover:text-pure-outline transition-colors"
+                >
+                  {copied ? <Check size={12} weight="bold" /> : <Copy size={12} weight="bold" />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
               </div>
               <p className="font-body text-xs text-white/30 mt-3">Apply at checkout · One use per customer</p>
             </div>
