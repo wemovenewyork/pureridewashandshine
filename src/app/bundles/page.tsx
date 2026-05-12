@@ -22,6 +22,23 @@ export default function BundlesPage() {
           </p>
         </div>
         <BundleCTA />
+        <section className="border-b-[3px] border-pure-outline bg-white px-4 sm:px-6 lg:px-8 py-16">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-cartoon text-xs uppercase tracking-widest text-pure-outline/50 mb-4">
+              About the Set
+            </h2>
+            <p className="font-body text-lg text-pure-outline/90 leading-relaxed">
+              Get the full Pure Ride lineup in one premium kit and tackle every surface of
+              your vehicle without compromise. This complete bundle pairs our Wash &amp; Wax,
+              Ceramic Spray, RVP Dressing, and Glass Cleaner — four pro-grade formulas
+              engineered to work together from the first rinse to the final shine. Wash with
+              vibrant color-safe suds, lock in protection with hydrophobic SiO2 coating,
+              condition every rubber, vinyl, and plastic surface, and finish with streak-free
+              crystal-clear glass. Perfect for car enthusiasts who want professional results
+              at home — and the best value Pure Ride has to offer.
+            </p>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

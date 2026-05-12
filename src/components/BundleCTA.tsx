@@ -71,7 +71,7 @@ export default function BundleCTA() {
               </h2>
 
               <p className="font-body text-base text-white/50 mb-8 max-w-sm">
-                Everything you need for that full clean &amp; shine. Save more. Shine better. Ride clean.
+                Wash, protect, condition, clear — the full Pure Ride lineup at $10 off. Pro-grade results, no upsells.
               </p>
 
               <div className="space-y-3 mb-8">
