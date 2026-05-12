@@ -99,17 +99,9 @@ export default function Footer() {
               ))}
             </ul>
             <div className="space-y-2">
-              <a href="mailto:hello@pureridewash.com" className="flex items-center gap-2 font-body text-sm text-white/40 hover:text-pure-blue transition-colors duration-100" aria-label="Email Pure Ride">
+              <a href="mailto:pureridewashshine@gmail.com" className="flex items-center gap-2 font-body text-sm text-white/40 hover:text-pure-blue transition-colors duration-100" aria-label="Email Pure Ride">
                 <Envelope size={13} aria-hidden="true" />
-                hello@pureridewash.com
-              </a>
-              <a href="mailto:support@pureridewash.com" className="flex items-center gap-2 font-body text-xs text-white/30 hover:text-pure-blue transition-colors duration-100" aria-label="Email Pure Ride support">
-                <Envelope size={12} aria-hidden="true" />
-                support@pureridewash.com
-              </a>
-              <a href="mailto:orders@pureridewash.com" className="flex items-center gap-2 font-body text-xs text-white/30 hover:text-pure-blue transition-colors duration-100" aria-label="Email Pure Ride orders">
-                <Envelope size={12} aria-hidden="true" />
-                orders@pureridewash.com
+                pureridewashshine@gmail.com
               </a>
             </div>
           </div>

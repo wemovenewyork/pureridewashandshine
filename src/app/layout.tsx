@@ -54,7 +54,7 @@ const organizationSchema = {
   logo: "https://pure-ride-wash.vercel.app/pure-ride-logo.png",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hello@pureridewash.com",
+    email: "pureridewashshine@gmail.com",
     contactType: "customer service",
   },
   sameAs: [] as string[],
