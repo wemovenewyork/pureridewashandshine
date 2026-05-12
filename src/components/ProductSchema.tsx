@@ -5,7 +5,7 @@ export default function ProductSchema() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: p.name,
-    description: p.subtitle,
+    description: p.description,
     image: `https://pure-ride-wash.vercel.app${p.image ?? ""}`,
     offers: {
       "@type": "Offer",
