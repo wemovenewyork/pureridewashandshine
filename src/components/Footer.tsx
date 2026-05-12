@@ -121,7 +121,25 @@ export default function Footer() {
             © {new Date().getFullYear()} Pure Ride Wash &amp; Shine. All rights reserved.
           </p>
           <p className="font-body text-xs text-white/20">
-            Built by FutreEng
+            Designed by{" "}
+            <a
+              href="https://instagram.com/wemovenewyork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-pure-blue transition-colors"
+            >
+              @wemovenewyork
+            </a>
+            <span className="mx-2 text-white/10" aria-hidden="true">·</span>
+            Powered by{" "}
+            <a
+              href="https://futreeng.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-pure-blue transition-colors"
+            >
+              FutreEng
+            </a>
           </p>
         </div>
       </div>
