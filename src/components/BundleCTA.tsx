@@ -10,6 +10,7 @@ const bundleIncludes = [
   { name: "Blue Soap", price: "$15" },
   { name: "Thick Dressing", price: "$15" },
   { name: "Glass Cleaner", price: "$10" },
+  { name: "Microfiber Wash Cloth", price: "FREE" },
 ];
 
 function addRipple(e: React.MouseEvent<HTMLButtonElement>) {
@@ -71,7 +72,7 @@ export default function BundleCTA() {
               </h2>
 
               <p className="font-body text-base text-white/50 mb-8 max-w-sm">
-                Wash, protect, condition, clear — the full Pure Ride lineup at $10 off. Pro-grade results, no upsells.
+                Wash, protect, condition, clear — the full Pure Ride lineup at $10 off, plus a free microfiber wash cloth. Pro-grade results, no upsells.
               </p>
 
               <div className="space-y-3 mb-8">
@@ -87,7 +88,13 @@ export default function BundleCTA() {
                       </div>
                       <span className="font-cartoon text-sm text-white uppercase tracking-wider">{item.name}</span>
                     </div>
-                    <span className="font-body text-sm text-white/30 line-through">{item.price}</span>
+                    {item.price === "FREE" ? (
+                      <span className="font-cartoon text-xs px-2 py-1 bg-pure-yellow text-pure-outline border-[2px] border-pure-outline uppercase tracking-widest shadow-[2px_2px_0_#111827]">
+                        {item.price}
+                      </span>
+                    ) : (
+                      <span className="font-body text-sm text-white/30 line-through">{item.price}</span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -118,7 +125,7 @@ export default function BundleCTA() {
               <button
                 onClick={(e) => {
                   addRipple(e);
-                  addItem({ id: "4piece-bundle", name: "4-Piece Bundle Set", subtitle: "Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner", price: 50, color: "#00a8ff", image: "/bundle-4piece.png" });
+                  addItem({ id: "4piece-bundle", name: "4-Piece Bundle Set", subtitle: "Ceramic Spray, Blue Soap, Thick Dressing, Glass Cleaner + free microfiber wash cloth", price: 50, color: "#00a8ff", image: "/bundle-4piece.png" });
                   openCart();
                 }}
                 aria-label="Add the Pure Ride 4-Piece Bundle to cart"
