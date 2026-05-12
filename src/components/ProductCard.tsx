@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Plus, Star } from "@phosphor-icons/react";
 import { useCartStore } from "@/store/cartStore";
 import type { ProductMeta } from "@/lib/products";
@@ -50,7 +51,8 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
   };
 
   return (
-    <article
+    <Link
+      href={`/products/${product.id}`}
       className="group relative flex flex-col border-[3px] border-pure-outline shadow-cartoon hover:shadow-cartoon-lg overflow-hidden cursor-pointer"
       style={{
         background: "linear-gradient(160deg, #0d1f35 0%, #0a1628 100%)",
@@ -59,7 +61,7 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
       }}
       onMouseMove={handleTilt}
       onMouseLeave={resetTilt}
-      aria-label={product.name}
+      aria-label={`${product.name} — view details`}
     >
       {/* Badge */}
       {product.badge && (
@@ -111,7 +113,13 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
             </span>
           </div>
           <button
-            onClick={(e) => { addRipple(e); addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.price, color: product.color, image: product.image }); openCart(); }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              addRipple(e);
+              addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.price, color: product.color, image: product.image });
+              openCart();
+            }}
             aria-label={`Add ${product.name} to cart`}
             className="btn-ripple flex items-center justify-center w-10 h-10 btn-premium-blue text-white"
           >
@@ -124,6 +132,6 @@ export default function ProductCard({ product }: { product: ProductMeta }) {
       <div className="h-[3px] w-0 group-hover:w-full transition-all duration-500"
         style={{ background: `linear-gradient(90deg, ${product.color}, transparent)` }}
         aria-hidden="true" />
-    </article>
+    </Link>
   );
 }
